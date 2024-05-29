@@ -1,0 +1,15 @@
+{
+  "name": "altcha-solver",
+  "version": "1.0.0",
+  "description": "Node lib for solve altcha",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "repository": "https://github.com/coffee-git/altcha-solver",
+  "author": "coffee-git",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "^5.0.0",
+    "@types/node": "^20.12.12"
+  }
+}
