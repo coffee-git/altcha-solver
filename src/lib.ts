@@ -1,6 +1,8 @@
 import { Worker } from "worker_threads";
 
-async function solveChallenge(challenge: string, salt: string, algorithm: string = 'SHA-256', max: number = 1e6, startNumber: number = 0, concurrency: number = 4): Promise<any | null> {
+import { Solution } from "./types.js";
+
+async function solveChallenge(challenge: string, salt: string, algorithm: string = 'SHA-256', max: number = 1e6, startNumber: number = 0, concurrency: number = 4): Promise<Solution | null> {
 
     const workers: Worker[] = [];
     for (let n = 0; n < concurrency; n++) {

@@ -1,5 +1,6 @@
 import { parentPort } from 'worker_threads';
 import crypto from 'node:crypto';
+const encoder = new TextEncoder();
 parentPort?.on("message", async (message) => {
     const { type, payload } = message;
     if (type === 'abort') {
@@ -12,7 +13,6 @@ parentPort?.on("message", async (message) => {
         parentPort?.postMessage(solution);
     }
 });
-const encoder = new TextEncoder();
 export function solveChallenge(challenge, salt, algorithm = 'SHA-256', max = 1e6, start = 0) {
     const controller = new AbortController();
     const startTime = Date.now();

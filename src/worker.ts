@@ -1,6 +1,11 @@
 import { parentPort } from 'worker_threads';
 
 import crypto from 'node:crypto';
+
+import { Solution, Algorithm } from './types.js';
+
+const encoder = new TextEncoder();
+
 parentPort?.on("message", async message => {
 
     const { type, payload } = message;
@@ -19,17 +24,6 @@ parentPort?.on("message", async message => {
         parentPort?.postMessage(solution);
     }
 });
-
-
-type Algorithm = 'SHA-1' | 'SHA-256' | 'SHA-512';
-
-interface Solution {
-    number: number;
-    took: number;
-    worker?: boolean;
-}
-
-const encoder = new TextEncoder();
 
 export function solveChallenge(challenge: string, salt: string, algorithm: string = 'SHA-256', max: number = 1e6, start: number = 0 ): { promise: Promise<Solution | null>; controller: AbortController } {
 
